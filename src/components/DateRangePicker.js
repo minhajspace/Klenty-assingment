@@ -13,7 +13,7 @@ const SelectDateRangePicker = (props) => {
             }
         >
             {!noLabel && <label style={labelStyle} className="label-inline-display"> {(props.isMandatory && (props.isMandatory == "true" || props.isMandatory == true)) && <span style={{ color: "#F62626",paddingLeft:"5px"}}>*</span>}</label>}
-            <DateRangePicker showOneCalendar format= "DD-MMM-YYYY" size="lg" {...inputOptions} style={{borderRadius:"unset", ...styles}} />
+            <DateRangePicker showOneCalendar dateFormat="yyyy-MM-dd HH:mm:ss" size="lg" {...inputOptions} style={{borderRadius:"unset", ...styles}} />
         </div>
     );
 };

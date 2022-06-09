@@ -2,11 +2,10 @@ import React from 'react';
 import Chart from 'react-apexcharts'
 
 
-class ApixBarChart extends React.Component {
-  constructor(props) {
-    super(props);
+const ApixBarChart = ({categories,series}) =>  {
+  
 
-    this.state = {
+     const state = {
       options: {
         chart: {
           id: 'apexchart-example'
@@ -40,22 +39,23 @@ class ApixBarChart extends React.Component {
               
 
         xaxis: {
-          categories: ["Jan27,2020","Feb03,2020","Feb10,2020","Feb17,2020","Mar2,2020"]
+          categories: categories  || ["Jan27,2020","Feb03,2020","Feb10,2020","Feb17,2020","Mar2,2020"]
         },
         
 
       },
       series: [{
         name: 'series-1',
-        data: [170,50,230,170,180]
+        data: series || [170,50,230,170,180]
       }]
     }
-  }
-  render() {
+  
+  
+   
     return (
-      <Chart options={this.state.options} series={this.state.series} type="bar" width={"100%"} height={320} maxWidth={300} />
+      <Chart options={state.options} series={state.series} type="bar" width={"100%"} height={320} maxWidth={300} />
     )
-  }
+  
 }
 
 export default ApixBarChart
