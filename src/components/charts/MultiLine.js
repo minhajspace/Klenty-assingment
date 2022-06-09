@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 import Chart from 'react-apexcharts'
 
-class Multiline extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
+const Multiline  = ({labels ,series}) =>  {
+  const state = {
           
             series: [{
-              name: '',
+              name: 'cctive',
               type: 'line',
-              data: [0,80,200,130,180]
-            }, {
-              name: '',
+              data: series.total.active
+            },
+             {
+              name: 'confirmed',
               type: 'line',
-              data: [190,40,260,190,200]
-            }],
+              data: series.total.confirmed
+            },
+             {
+              name: 'cecovered',
+              type: 'line',
+              data: series.total.recovered
+            },
+             {
+              name: 'death',
+              type: 'line',
+              data: series.total.death
+            }
+          ],
             options: {
               chart: {
                 height: 350,
@@ -34,7 +42,7 @@ class Multiline extends Component {
 
 
               },
-              labels: ["Jan27,2020","Feb03,2020","Feb10,2020","Feb17,2020","Mar2,2020"],
+              labels: labels ,
               markers: {
                 size: 0
               },
@@ -67,17 +75,17 @@ class Multiline extends Component {
           
           
           };
-        }
+        
 
 
-  render() {
+
 
     return (
       <div className="line">
-        <Chart options={this.state.options} series={this.state.series} type="line" width="500" />
+        <Chart options={state.options} series={state.series} type="line" width="100%" />
       </div>
     );
   }
-}
+
 
 export default Multiline;

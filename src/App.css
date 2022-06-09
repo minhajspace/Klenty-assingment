@@ -1,8 +1,8 @@
 .App {
   text-align: center;
   background-color: #fbf5fe;
-  width: 100vwrsuite;
-  height: 100vh;
+  width: 100%;
+  height: auto;
 
 }
 
@@ -91,6 +91,11 @@
 .w-50 {
   width: 45%;
   margin: 1rem auto;
+}
+
+
+.justify-center {
+  justify-content: center;
 }
 
 

@@ -3,7 +3,7 @@ import Chart from 'react-apexcharts'
 
 
 const ApixBarChart = ({categories,series}) =>  {
-  
+    console.log("series===",series)
 
      const state = {
       options: {

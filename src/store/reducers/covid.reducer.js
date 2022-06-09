@@ -5,7 +5,10 @@ import {
     FETCH_COVID_RECORDS_FAILED,
     FETCH_HOSPITAL_BEDS_START,
     FETCH_HOSPITAL_BEDS_SUCCESS,
-    FETCH_HOSPITAL_BEDS_FAILED
+    FETCH_HOSPITAL_BEDS_FAILED,
+     FETCH_HISTORY_DATA_START,
+    FETCH_HISTORY_DATA_SUCCESS,
+    FETCH_HISTORY_DATA_FAILED,
 }
 from '../actionType'
 
@@ -15,7 +18,8 @@ const initialState = {
   error : [],
   statewise: [],
   bedCounts : [],
-  bedCountsregional :[]
+  bedCountsregional :[],
+  covidHistoryData :[]
  
 }
 
@@ -65,6 +69,29 @@ export default (state = initialState, action) => {
        isLoading : false,
        error : action.payload
       }
+
+    // history data 
+
+     case FETCH_HISTORY_DATA_START:
+      return {
+       ...state , 
+       isLoading : true
+      }
+     case FETCH_HISTORY_DATA_SUCCESS:
+      return {
+       ...state , 
+       isLoading : false,
+       covidHistoryData : action.payload.history       
+      }
+      
+    case FETCH_HISTORY_DATA_FAILED:
+      return {
+       ...state , 
+       isLoading : false,
+       error : action.payload
+      }
+
+
 
 
     default:
