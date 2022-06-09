@@ -1,11 +1,21 @@
 
-import {FETCH_COVID_RECORDS_START,FETCH_COVID_RECORDS_SUCCESS,FETCH_COVID_RECORDS_FAILED} from '../actionType'
+import {
+   FETCH_COVID_RECORDS_START,
+    FETCH_COVID_RECORDS_SUCCESS,
+    FETCH_COVID_RECORDS_FAILED,
+    FETCH_HOSPITAL_BEDS_START,
+    FETCH_HOSPITAL_BEDS_SUCCESS,
+    FETCH_HOSPITAL_BEDS_FAILED
+}
+from '../actionType'
 
 const initialState = {
   covidDetails : [],
   isLoading : false,
   error : [],
-  statewise: []
+  statewise: [],
+  bedCounts : [],
+  bedCountsregional :[]
  
 }
 
@@ -33,6 +43,29 @@ export default (state = initialState, action) => {
        error : action.payload
       }
      
+      // Hospital Beds counts 
+      case FETCH_HOSPITAL_BEDS_START:
+      return {
+       ...state , 
+       isLoading : true
+      }
+     case FETCH_HOSPITAL_BEDS_SUCCESS:
+      return {
+       ...state , 
+       isLoading : false,
+       bedCounts : action.payload.summary,
+       bedCountsregional : action.payload.regional
+
+       
+      }
+      
+    case FETCH_HOSPITAL_BEDS_FAILED:
+      return {
+       ...state , 
+       isLoading : false,
+       error : action.payload
+      }
+
 
     default:
       return state

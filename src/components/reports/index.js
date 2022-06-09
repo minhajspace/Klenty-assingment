@@ -7,20 +7,28 @@ import HorizontalBar from '../charts/HorizontalBar'
 import SelectInput from '../SelecteInput'
 import SelectDateRangePicker from '../DateRangePicker'
 import moment from 'moment'
-import {fetchCovidData} from '../../store/actions/covid.action'
+import {fetchCovidData ,fetchHospitalsBeds} from '../../store/actions/covid.action'
 import { useDispatch,useSelector } from 'react-redux'
 const data = [
     {
-        lable : "Active",
-        value : "Active"
+        lable : "all",
+        value : "all"
     },
     {
-        lable : "Active",
-        value : "Active"
+        lable : "active",
+        value : "active"
     },
     {
-        lable : "Active",
-        value : "Active"
+        lable : "confirmed",
+        value : "confirmed"
+    },
+    {
+        lable : "recovered",
+        value : "recovered"
+    },
+      {
+        lable : "deaths",
+        value : "deaths"
     },
 ]
 
@@ -35,24 +43,27 @@ const Reports = () => {
   const statewise = useSelector((state) => state.covid?.statewise)
   const [filterDefaultValue,setFilterDefaultValue] = useState("Maharashtra") 
   const [statewiseFilterData , setStateWiseFilterData] = useState(statewise)
+   const [covedRecordsCound,setcovedRecordsCound] = useState("all") 
+  
   
   
 
 useEffect(()=>{
    dispatch(fetchCovidData())
+   dispatch(fetchHospitalsBeds())
 },[])
 
 
 
 
 
-console.log("statewise===",Object.assign({},statewise.filter(states => states.state === filterDefaultValue)[0]))
+console.log("covidChartData===",useSelector((state)=> state))
 
 
 
     return <>
-     <div className="d-flex ">
-         <div className=' d-flex flex-col card w-50'>
+     <div className="d-flex mob-flex-col">
+         <div className=' d-flex flex-col card w-50 mob-w100'>
              <div className='d-flex m-xl space-between'>
                     <div>
                       <h4>Total India Cases</h4>
@@ -71,52 +82,26 @@ console.log("statewise===",Object.assign({},statewise.filter(states => states.st
                         // onClean: () => setTotalMattersStatus(null),
                         cleanable: false,
                         onChange: (value) => {
-                          //onFilterChange(value,setTotalMattersStatus)
-                        //   handleFilterChangeSingleSelect([value], setTotalMattersStatus, totalMattersStatus, defaultMatterArtefact)
+                          setcovedRecordsCound(value)
                         },
-                        // value: totalMattersStatus[0],
+                         value: covedRecordsCound,
                          data: data
                       }}
                     />
-                    {/* <SelectDateRangePicker
-                      label="Select Date Range"
-                      noLabel
-                      styles={{ height: "30px", border: "none",width:'200px' }}
-                      labelStyle={{ fontSize: "10px" }}
-                      inputOptions={{
-                        value:  startDate && endDate ?  [startDate , endDate]  : [] ,
-                        size: "xs",
-                        placeholder: "Start Date - End Date",
-                        ranges: [],
-                        onChange: (value) => {
-                          console.log("value===",value)
-                          setStartDate(moment(value[0]).format("yyyy-MM-dd HH:mm:ss"));
-                          setEndDate(moment(value[1]).format("yyyy-MM-dd HH:mm:ss"));
-                        },
-                        onOk: (value) => {
-                          console.log("value===",value)
-                          setStartDate(moment(value[0]).format("yyyy-MM-dd HH:mm:ss"));
-                          setEndDate(moment(value[1]).format("yyyy-MM-dd HH:mm:ss"));
-                        },
-                        onClean: () => {
-                          setStartDate(null)
-                          endDate(null)
-                        }
-                      }}
-                    /> */}
+                    
                    
                      
                  </div>
                  <div>
                    <ApixBarChart
-                   categories = {Object.keys(covidChartData)}
-                   series = {Object.values(covidChartData)}
+                   categories = {covedRecordsCound === "all" ? Object.keys(covidChartData) : covedRecordsCound === "active" ? ["active"] : covedRecordsCound === "confirmed" ? ["confirmed"] : covedRecordsCound === "recovered" ? ["recovered"] : ["deaths"]}
+                   series = {covedRecordsCound === "all" ? Object.values(covidChartData) : covedRecordsCound === "active" ? [covidChartData.active] : covedRecordsCound === "confirmed" ? [covidChartData.confirmed] : covedRecordsCound === "recovered" ? [covidChartData.recovered] : [covidChartData.deaths]}
 
                    /> 
                  </div>
 
          </div>
-          <div className=' d-flex flex-col card w-50'>
+          <div className=' d-flex flex-col card w-50 mob-w100'>
              <div className='d-flex m-xl space-between'>
                    <h4>Statewise  Cases</h4>
                      <SelectInput
