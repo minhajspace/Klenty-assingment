@@ -5,7 +5,6 @@ import Line from '../charts/Line'
 import Multiline from '../charts/MultiLine'
 import HorizontalBar from '../charts/HorizontalBar'
 import SelectInput from '../SelecteInput'
-import SelectDateRangePicker from '../DateRangePicker'
 import moment from 'moment'
 import {fetchCovidData ,fetchHospitalsBeds} from '../../store/actions/covid.action'
 import { useDispatch,useSelector } from 'react-redux'
@@ -215,6 +214,7 @@ return  Object.values(Object.assign({},statewise.filter(states => states.state =
                  </div>
 
          </div>
+        
          
          
      
