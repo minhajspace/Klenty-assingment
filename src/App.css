@@ -108,3 +108,11 @@
     width: 100%;
   }
 }
+
+.main-heading {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 1rem 0;
+}

@@ -7,7 +7,7 @@ import HorizontalBar from '../charts/HorizontalBar'
 import SelectInput from '../SelecteInput'
 import SelectDateRangePicker from '../DateRangePicker'
 import moment from 'moment'
-import {fetchCovidData ,fetchHospitalsBeds,fetchHistoryData} from '../../store/actions/covid.action'
+import {fetchCovidData ,fetchHospitalsBeds} from '../../store/actions/covid.action'
 import { useDispatch,useSelector } from 'react-redux'
 import {lineGraph,filterOptions} from '../../constents/dummyData'
 
@@ -25,7 +25,6 @@ const Reports = () => {
   const [covedRecordsCound,setcovedRecordsCound] = useState("all") 
   const [hospitalsBeds,setHospitalBeds]= useState("totalBeds")
   const hospitalBedsCounts = useSelector((state)=> state.covid.bedCounts)
-  const historyData = useSelector((state)=> state.covid.covidHistoryData)
   const [historyFilter , setHistoryFilter] = useState("01/2021") 
   
   
@@ -34,19 +33,15 @@ const Reports = () => {
 useEffect(()=>{
    dispatch(fetchCovidData())
    dispatch(fetchHospitalsBeds())
-   dispatch(fetchHistoryData())
+  
 },[])
 
 const getDonutSeries = (beds) => {
- 
  return  beds === "totalBeds" ?  Object.values(hospitalBedsCounts) : [hospitalBedsCounts[beds]]
-
 }
 
 const getDonutlabel = (beds) => {
- 
  return  beds === "totalBeds" ?  Object.keys(hospitalBedsCounts) : [beds]
-
 }
 
 const getStateWiseCategory = () => {
@@ -60,20 +55,12 @@ return  Object.values(Object.assign({},statewise.filter(states => states.state =
 
 
 
-
-
-
-// console.log("covidChartData===",useSelector((state)=> state.covid.covidHistoryData))
-
-// console.log((historyData.map(item => item.total)))
-
-
-console.log("lineGraph===",lineGraph)
-
-
-
     return <>
      <div className="d-flex mob-flex-col">
+       <div className='main-heading'>
+         <h2>Covid Tracking Report</h2>
+
+       </div>
          <div className=' d-flex flex-col card w-50 mob-w100'>
              <div className='d-flex m-xl space-between'>
                     <div>

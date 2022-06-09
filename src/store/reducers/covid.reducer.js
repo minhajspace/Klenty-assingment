@@ -70,26 +70,7 @@ export default (state = initialState, action) => {
        error : action.payload
       }
 
-    // history data 
-
-     case FETCH_HISTORY_DATA_START:
-      return {
-       ...state , 
-       isLoading : true
-      }
-     case FETCH_HISTORY_DATA_SUCCESS:
-      return {
-       ...state , 
-       isLoading : false,
-       covidHistoryData : action.payload.history       
-      }
-      
-    case FETCH_HISTORY_DATA_FAILED:
-      return {
-       ...state , 
-       isLoading : false,
-       error : action.payload
-      }
+   
 
 
 
