@@ -2,8 +2,8 @@ import React from 'react';
 import Chart from 'react-apexcharts'
 
 
-const ApixBarChart = ({categories,series}) =>  {
-    console.log("series===",series)
+const ApixBarChart = ({categories,series,height=300}) =>  {
+ 
 
      const state = {
       options: {
@@ -33,7 +33,19 @@ const ApixBarChart = ({categories,series}) =>  {
                 bar: {
                   borderRadius: 5,
                   width: 0.5,
-                   columnWidth:30
+                   columnWidth:30,
+                   dataLabels: {
+                    position: 'top', // top, center, bottom
+                   
+                  },
+                }
+              },
+               dataLabels: {
+                enabled: true,
+                offsetY: -20,
+                style: {
+                  fontSize: '12px',
+                  colors: ["#1B435D"]
                 }
               },
               
@@ -53,7 +65,7 @@ const ApixBarChart = ({categories,series}) =>  {
   
    
     return (
-      <Chart options={state.options} series={state.series} type="bar" width={"100%"} height={320} maxWidth={300} />
+      <Chart options={state.options} series={state.series} type="bar" width={"100%"} height={height} maxWidth={300} />
     )
   
 }

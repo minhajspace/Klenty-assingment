@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import Chart from 'react-apexcharts'
 
-const Donut = ({labels,series}) => {
+const Donut = ({labels,series,height=300}) => {
 
  
    const state = {
       options: {
         labels: labels || ['Stat1', 'Stat2', 'Stat3',],
-        colors:["#085490","#5EABC5","#B3DDEB"],
       },
       series: series|| [33,33,34]
   }
@@ -16,7 +15,7 @@ const Donut = ({labels,series}) => {
 
     return (
       <div className="donut">
-        <Chart options={state.options} series={state.series} type="donut" width="380" />
+        <Chart options={state.options} series={state.series} type="donut" width="350"  height={height} />
       </div>
     );
   

@@ -20,12 +20,12 @@ const Reports = () => {
   const dispatch = useDispatch()
   const covidChartData = useSelector((state) => state.covid?.covidDetails)
   const statewise = useSelector((state) => state.covid?.statewise)
-  const [filterDefaultValue,setFilterDefaultValue] = useState("Maharashtra") 
+  const [filterDefaultValue,setFilterDefaultValue] = useState(statewise[0]?.state) 
   const [statewiseFilterData , setStateWiseFilterData] = useState(statewise)
   const [covedRecordsCound,setcovedRecordsCound] = useState("all") 
   const [hospitalsBeds,setHospitalBeds]= useState("totalBeds")
   const hospitalBedsCounts = useSelector((state)=> state.covid.bedCounts)
-  const [historyFilter , setHistoryFilter] = useState("01/2021") 
+  const [historyFilter , setHistoryFilter] = useState(lineGraph[0].month) 
   
   
   
@@ -33,8 +33,12 @@ const Reports = () => {
 useEffect(()=>{
    dispatch(fetchCovidData())
    dispatch(fetchHospitalsBeds())
-  
 },[])
+
+useEffect(()=>{
+  setFilterDefaultValue(statewise[0]?.state)
+  
+},[statewise])
 
 const getDonutSeries = (beds) => {
  return  beds === "totalBeds" ?  Object.values(hospitalBedsCounts) : [hospitalBedsCounts[beds]]
@@ -163,7 +167,7 @@ return  Object.values(Object.assign({},statewise.filter(states => states.state =
                    
                      
                  </div>
-                 <div className='d-flex justify-center'>
+                 <div className='d-flex justify-center mt-xxl'>
                   
 
                    <Donut
@@ -204,7 +208,7 @@ return  Object.values(Object.assign({},statewise.filter(states => states.state =
                  </div>
                  <div>
                    <Multiline
-                   labels= {lineGraph.map(item => item.month )}
+                   labels= {[historyFilter]}
                    series= {Object.assign({},lineGraph.filter(item => item.month === historyFilter)[0])}
                    /> 
                  </div>
