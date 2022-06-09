@@ -67,9 +67,10 @@ return  Object.values(Object.assign({},statewise.filter(states => states.state =
        </div>
          <div className=' d-flex flex-col card w-50 mob-w100'>
              <div className='d-flex m-xl space-between'>
-                    <div>
+                    <div className='mob-mb-sm'>
                       <h4>Total india cases</h4>
                     </div>
+
                      <SelectInput
                       label="Select Status" 
                       stackedLabel
@@ -105,7 +106,7 @@ return  Object.values(Object.assign({},statewise.filter(states => states.state =
          </div>
           <div className=' d-flex flex-col card w-50 mob-w100'>
              <div className='d-flex m-xl space-between'>
-                   <h4>Statewise cases</h4>
+                   <h4 className='mob-mb-sm'>Statewise cases</h4>
                      <SelectInput
                       label="Select Status" 
                       stackedLabel
@@ -140,7 +141,7 @@ return  Object.values(Object.assign({},statewise.filter(states => states.state =
          </div>
          <div className=' d-flex flex-col card w-50 mob-w100'>
              <div className='d-flex m-xl space-between'>
-                    <div>
+                    <div className='mob-mb-sm'>
                       <h4>Total beds avalibale</h4>
                     </div>
                      <SelectInput
@@ -179,7 +180,7 @@ return  Object.values(Object.assign({},statewise.filter(states => states.state =
          </div>
          <div className=' d-flex flex-col card w-50 mob-w100'>
              <div className='d-flex m-xl space-between'>
-                    <div>
+                    <div className='mob-mb-sm'>
                       <h4>Total cases month wise</h4>
                     </div>
                      <SelectInput
