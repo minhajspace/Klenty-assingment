@@ -26,10 +26,10 @@ const styles = { width: 224, display: 'block', marginBottom: 10 }
 const Reports = () => {
     return <>
      <div className="d-flex ">
-         <div className='flex-1 d-flex flex-col card '>
-             <div className='d-flex'>
+         <div className=' d-flex flex-col card w-50'>
+             <div className='d-flex m-xl space-between'>
                      <SelectInput
-                      label="Select Status"
+                      label="Select Status" 
                       stackedLabel
                       noLabel
                       labelStyle={{ fontSize: 12, border: "none" }}
@@ -49,16 +49,46 @@ const Reports = () => {
                          data: data
                       }}
                     />
+                    <SelectDateRangePicker />
                      
-                    
-
                  </div>
                  <div>
                    <ApixBarChart/> 
                  </div>
 
          </div>
-         <div className='flex-1 d-flex flex-col card'>
+          <div className=' d-flex flex-col card w-50'>
+             <div className='d-flex m-xl space-between'>
+                     <SelectInput
+                      label="Select Status" 
+                      stackedLabel
+                      noLabel
+                      labelStyle={{ fontSize: 12, border: "none" }}
+                      inputOptions={{
+                        style : styles,
+                        menuStyle: { fontSize: '12px',width:"200px" },
+                        searchable: false,
+                        labelKey: "lable",
+                        valueKey: "value",
+                        // onClean: () => setTotalMattersStatus(null),
+                        cleanable: false,
+                        onChange: (value) => {
+                          //onFilterChange(value,setTotalMattersStatus)
+                        //   handleFilterChangeSingleSelect([value], setTotalMattersStatus, totalMattersStatus, defaultMatterArtefact)
+                        },
+                        // value: totalMattersStatus[0],
+                         data: data
+                      }}
+                    />
+                    <SelectDateRangePicker />
+                     
+                 </div>
+                 <div>
+                   <ApixBarChart/> 
+                 </div>
+
+         </div>
+         {/* <div className='flex-1 d-flex flex-col card'>
              <div className='d-flex'>
                  <div>
                      <SelectInput
@@ -95,7 +125,7 @@ const Reports = () => {
                 <ApixBarChart/> 
              </div>
 
-         </div>
+         </div> */}
          
      
     </div>

@@ -66,3 +66,29 @@
   background-color: #fff;
 }
 
+
+.rs-picker-toggle .rs-btn .rs-btn-default .rs-btn-lg {
+  position: relative;
+  left: -0;
+}
+
+.rs-picker-toggle-wrapper {
+  width: 200px;
+}
+
+.rs-picker-default .rs-picker-toggle.rs-btn-lg {
+  left: -0px;
+}
+
+.m-xl {
+  margin: 1rem;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.w-50 {
+  width: 45%;
+  margin: 1rem auto;
+}
