@@ -1,10 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts'
 
-
-const ApixBarChart = ({categories,series,height=300}) =>  {
- 
-
+const BarChart = ({categories,series,height=300 ,horizontalView=false}) =>  {
      const state = {
       options: {
         chart: {
@@ -34,6 +31,7 @@ const ApixBarChart = ({categories,series,height=300}) =>  {
                   borderRadius: 5,
                   width: 0.5,
                    columnWidth:30,
+                   horizontal: horizontalView,
                    dataLabels: {
                     position: 'top', // top, center, bottom
                    
@@ -41,6 +39,7 @@ const ApixBarChart = ({categories,series,height=300}) =>  {
                 }
               },
                dataLabels: {
+                 horizontal: horizontalView,
                 enabled: true,
                 offsetY: -20,
                 style: {
@@ -53,8 +52,6 @@ const ApixBarChart = ({categories,series,height=300}) =>  {
         xaxis: {
           categories: categories  || ["Jan27,2020","Feb03,2020","Feb10,2020","Feb17,2020","Mar2,2020"]
         },
-        
-
       },
       series: [{
         name: 'series-1',
@@ -62,12 +59,10 @@ const ApixBarChart = ({categories,series,height=300}) =>  {
       }]
     }
   
-  
-   
     return (
       <Chart options={state.options} series={state.series} type="bar" width={"100%"} height={height} maxWidth={300} />
     )
   
 }
 
-export default ApixBarChart
+export default BarChart

@@ -1,11 +1,8 @@
 import React,{useState,useEffect} from 'react'
-import ApixBarChart from '../charts/DashboardApex'
-import Donut from '../charts/ApexDonut'
-import Line from '../charts/Line'
-import Multiline from '../charts/MultiLine'
-import HorizontalBar from '../charts/HorizontalBar'
+import BarChart from '../charts/Barchart'
+import DonutChart from '../charts/Donutchart'
+import MultilineChart from '../charts/MultiLine'
 import SelectInput from '../SelecteInput'
-import moment from 'moment'
 import {fetchCovidData ,fetchHospitalsBeds} from '../../store/actions/covid.action'
 import { useDispatch,useSelector } from 'react-redux'
 import {lineGraph,filterOptions} from '../../constents/dummyData'
@@ -98,7 +95,7 @@ function captilizeFirstLetter  (str)  {
                      
                  </div>
                  <div>
-                   <ApixBarChart
+                   <BarChart
                    categories = {covedRecordsCound === "All" ? Object.keys(covidChartData) : covedRecordsCound === "Active" ? ["Active"] : covedRecordsCound === "Confirmed" ? ["Confirmed"] : covedRecordsCound === "Recovered" ? ["Recovered"] : ["Deaths"]}
                    series = {covedRecordsCound === "All" ? Object.values(covidChartData) : covedRecordsCound === "Active" ? [covidChartData.active] : covedRecordsCound === "Confirmed" ? [covidChartData.confirmed] : covedRecordsCound === "Recovered" ? [covidChartData.recovered] : [covidChartData.deaths]}
 
@@ -134,7 +131,7 @@ function captilizeFirstLetter  (str)  {
                      
                  </div>
                  <div>
-                   <ApixBarChart
+                   <BarChart
                    categories = {getStateWiseCategory()}
                    series = {getStateWiseSeries()}
                    /> 
@@ -173,7 +170,7 @@ function captilizeFirstLetter  (str)  {
                  <div className='d-flex justify-center mb-xxl'>
                   
 
-                   <Donut
+                   <DonutChart
                    labels={getDonutlabel(hospitalsBeds).map(lable => captilizeFirstLetter(lable))}
                    series={getDonutSeries(hospitalsBeds)}
                    />
@@ -210,17 +207,13 @@ function captilizeFirstLetter  (str)  {
                      
                  </div>
                  <div>
-                   <Multiline
+                   <MultilineChart
                    labels= {[historyFilter]}
                    series= {Object.assign({},lineGraph.filter(item => item.month === historyFilter)[0])}
                    /> 
                  </div>
 
          </div>
-        
-         
-         
-     
     </div>
     </>
 }

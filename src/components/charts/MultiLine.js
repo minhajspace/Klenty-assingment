@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Chart from 'react-apexcharts'
 
-const Multiline  = ({labels ,series ,height=300}) =>  {
-  console.log("labels===",labels)
+const MultilineChart  = ({labels ,series ,height=300}) =>  {
   const state = {
           
             series: [{
@@ -89,4 +88,4 @@ const Multiline  = ({labels ,series ,height=300}) =>  {
   }
 
 
-export default Multiline;
+export default MultilineChart;

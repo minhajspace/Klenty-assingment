@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts'
 
-const Donut = ({labels,series,height=300 ,innerWidth = "65%" ,intensity = 0.65}) => {
+const DonutChart = ({labels,series,height=300 ,innerWidth = "65%" ,intensity = 0.65}) => {
 
  
   const state =  {
@@ -83,4 +83,4 @@ const Donut = ({labels,series,height=300 ,innerWidth = "65%" ,intensity = 0.65})
   
 }
 
-export default Donut;
+export default DonutChart;
