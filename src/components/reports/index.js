@@ -11,8 +11,6 @@ import {lineGraph,filterOptions} from '../../constents/dummyData'
 
 const styles = { width: 224, display: 'block', marginBottom: 10 }
 const Reports = () => {
-  const [startDate,setStartDate] = useState()
-  const [endDate,setEndDate] = useState()
   const dispatch = useDispatch()
   const covidChartData = useSelector((state) => state.covid?.covidDetails)
   const statewise = useSelector((state) => state.covid?.statewise)
@@ -214,6 +212,7 @@ function captilizeFirstLetter  (str)  {
                  </div>
 
          </div>
+        
     </div>
     </>
 }
