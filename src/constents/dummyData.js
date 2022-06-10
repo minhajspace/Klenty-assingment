@@ -39,23 +39,23 @@ export const lineGraph = [
 
 export const filterOptions = [
     {
-        lable : "all",
-        value : "all"
+        lable : "All",
+        value : "All"
     },
     {
-        lable : "active",
-        value : "active"
+        lable : "Active",
+        value : "Active"
     },
     {
-        lable : "confirmed",
-        value : "confirmed"
+        lable : "Confirmed",
+        value : "Confirmed"
     },
     {
-        lable : "recovered",
-        value : "recovered"
+        lable : "Recovered",
+        value : "Recovered"
     },
       {
-        lable : "deaths",
-        value : "deaths"
+        lable : "Deaths",
+        value : "Deaths"
     },
 ]

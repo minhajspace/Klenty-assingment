@@ -21,7 +21,7 @@ const Reports = () => {
   const statewise = useSelector((state) => state.covid?.statewise)
   const [filterDefaultValue,setFilterDefaultValue] = useState(statewise[0]?.state) 
   const [statewiseFilterData , setStateWiseFilterData] = useState(statewise)
-  const [covedRecordsCound,setcovedRecordsCound] = useState("all") 
+  const [covedRecordsCound,setcovedRecordsCound] = useState("All") 
   const [hospitalsBeds,setHospitalBeds]= useState("totalBeds")
   const hospitalBedsCounts = useSelector((state)=> state.covid.bedCounts)
   const [historyFilter , setHistoryFilter] = useState(lineGraph[0].month) 
@@ -39,24 +39,27 @@ useEffect(()=>{
   
 },[statewise])
 
-const getDonutSeries = (beds) => {
+function getDonutSeries  (beds)  {
  return  beds === "totalBeds" ?  Object.values(hospitalBedsCounts) : [hospitalBedsCounts[beds]]
 }
 
-const getDonutlabel = (beds) => {
+function getDonutlabel  (beds)  {
  return  beds === "totalBeds" ?  Object.keys(hospitalBedsCounts) : [beds]
 }
 
-const getStateWiseCategory = () => {
+function getStateWiseCategory () {
 return  Object.keys(Object.assign({},statewise.filter(states => states.state === filterDefaultValue)[0])).filter(item => item !== "state")
 }
 
-const getStateWiseSeries = () => {
+function getStateWiseSeries  () {
 return  Object.values(Object.assign({},statewise.filter(states => states.state === filterDefaultValue)[0])).filter(item => Number(item))
 }
 
+function captilizeFirstLetter  (str)  {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
-
+console.log("covedRecordsCound===",covedRecordsCound)
 
     return <>
      <div className="d-flex mob-flex-col">
@@ -67,7 +70,7 @@ return  Object.values(Object.assign({},statewise.filter(states => states.state =
          <div className=' d-flex flex-col card w-50 mob-w100'>
              <div className='d-flex m-xl space-between'>
                     <div className='mob-mb-sm'>
-                      <h4>Total india cases</h4>
+                      <h4>Total India cases</h4>
                     </div>
 
                      <SelectInput
@@ -96,8 +99,8 @@ return  Object.values(Object.assign({},statewise.filter(states => states.state =
                  </div>
                  <div>
                    <ApixBarChart
-                   categories = {covedRecordsCound === "all" ? Object.keys(covidChartData) : covedRecordsCound === "active" ? ["active"] : covedRecordsCound === "confirmed" ? ["confirmed"] : covedRecordsCound === "recovered" ? ["recovered"] : ["deaths"]}
-                   series = {covedRecordsCound === "all" ? Object.values(covidChartData) : covedRecordsCound === "active" ? [covidChartData.active] : covedRecordsCound === "confirmed" ? [covidChartData.confirmed] : covedRecordsCound === "recovered" ? [covidChartData.recovered] : [covidChartData.deaths]}
+                   categories = {covedRecordsCound === "All" ? Object.keys(covidChartData) : covedRecordsCound === "Active" ? ["Active"] : covedRecordsCound === "Confirmed" ? ["Confirmed"] : covedRecordsCound === "Recovered" ? ["Recovered"] : ["Deaths"]}
+                   series = {covedRecordsCound === "All" ? Object.values(covidChartData) : covedRecordsCound === "Active" ? [covidChartData.active] : covedRecordsCound === "Confirmed" ? [covidChartData.confirmed] : covedRecordsCound === "Recovered" ? [covidChartData.recovered] : [covidChartData.deaths]}
 
                    /> 
                  </div>
