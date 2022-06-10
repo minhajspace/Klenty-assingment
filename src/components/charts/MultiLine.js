@@ -31,7 +31,7 @@ const Multiline  = ({labels ,series ,height=300}) =>  {
                 height: 350,
                 type: 'line',
               },
-              colors:["#03243E","#E6FBFF"],
+              colors:["#03243E","#ff8000","#336600","#cc0000"],
               stroke: {
                 curve: 'smooth',
                 width:2

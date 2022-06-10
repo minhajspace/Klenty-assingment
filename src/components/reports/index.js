@@ -170,7 +170,7 @@ function captilizeFirstLetter  (str)  {
                    
                      
                  </div>
-                 <div className='d-flex justify-center mt-xxl'>
+                 <div className='d-flex justify-center mb-xxl'>
                   
 
                    <Donut
