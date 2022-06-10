@@ -48,7 +48,7 @@ function getDonutlabel  (beds)  {
 }
 
 function getStateWiseCategory () {
-return  Object.keys(Object.assign({},statewise.filter(states => states.state === filterDefaultValue)[0])).filter(item => item !== "state")
+return  Object.keys(Object.assign({},statewise.filter(states => states.state === filterDefaultValue)[0])).map(categoryText => captilizeFirstLetter(categoryText)).filter(item => item !== "State")
 }
 
 function getStateWiseSeries  () {
@@ -59,7 +59,7 @@ function captilizeFirstLetter  (str)  {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-console.log("covedRecordsCound===",covedRecordsCound)
+
 
     return <>
      <div className="d-flex mob-flex-col">
@@ -144,7 +144,7 @@ console.log("covedRecordsCound===",covedRecordsCound)
          <div className=' d-flex flex-col card w-50 mob-w100'>
              <div className='d-flex m-xl space-between'>
                     <div className='mob-mb-sm'>
-                      <h4>Total beds avalibale</h4>
+                      <h4>Total beds available</h4>
                     </div>
                      <SelectInput
                       label="Select Status" 
@@ -163,7 +163,7 @@ console.log("covedRecordsCound===",covedRecordsCound)
                           setHospitalBeds(value)
                         },
                          value: hospitalsBeds,
-                         data: Object.keys(hospitalBedsCounts).map(item => ({lable : item , value : item}))
+                         data: Object.keys(hospitalBedsCounts).map(item => ({lable : captilizeFirstLetter(item) , value : item}))
                       }}
                     />
                     
@@ -174,7 +174,7 @@ console.log("covedRecordsCound===",covedRecordsCound)
                   
 
                    <Donut
-                   labels={getDonutlabel(hospitalsBeds)}
+                   labels={getDonutlabel(hospitalsBeds).map(lable => captilizeFirstLetter(lable))}
                    series={getDonutSeries(hospitalsBeds)}
                    />
                  </div>
@@ -183,7 +183,7 @@ console.log("covedRecordsCound===",covedRecordsCound)
          <div className=' d-flex flex-col card w-50 mob-w100'>
              <div className='d-flex m-xl space-between'>
                     <div className='mob-mb-sm'>
-                      <h4>Total cases month wise</h4>
+                      <h4>Total cases monthly</h4>
                     </div>
                      <SelectInput
                       label="Select Status" 

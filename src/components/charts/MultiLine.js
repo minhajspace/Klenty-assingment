@@ -6,22 +6,22 @@ const Multiline  = ({labels ,series ,height=300}) =>  {
   const state = {
           
             series: [{
-              name: 'cctive',
+              name: 'Active',
               type: 'line',
               data: series.total.active
             },
              {
-              name: 'confirmed',
+              name: 'Confirmed',
               type: 'line',
               data: series.total.confirmed
             },
              {
-              name: 'cecovered',
+              name: 'Recovered',
               type: 'line',
               data: series.total.recovered
             },
              {
-              name: 'death',
+              name: 'Death',
               type: 'line',
               data: series.total.death
             }
